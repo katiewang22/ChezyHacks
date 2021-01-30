@@ -3,8 +3,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 
-import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
 import HomeScreen from '../screens/HomeScreen';
 import JournalScreen from '../screens/JournalScreen';
 import CalendarScreen from '../screens/CalendarScreen';
@@ -14,12 +12,17 @@ import { BottomTabParamList, HomeParamList, JournalParamList, CalendarParamList,
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
-  const colorScheme = useColorScheme();
 
   return (
     <BottomTab.Navigator
       initialRouteName="Home"
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
+      tabBarOptions={{ 
+        activeTintColor: '#F28482',
+        inactiveBackgroundColor: '#F7EDE2',
+        activeBackgroundColor: '#F7EDE2',
+      }}
+    >
+      
       <BottomTab.Screen
         name="Home"
         component={HomeNavigator}
@@ -68,7 +71,12 @@ function HomeNavigator() {
       <HomeStack.Screen
         name="HomeScreen"
         component={HomeScreen}
-        options={{ headerTitle: 'Home' }}
+        options={{ 
+          headerTitle: 'Home',
+          headerStyle: {
+            backgroundColor: '#F7EDE2',
+          },
+        }}
       />
     </HomeStack.Navigator>
   );

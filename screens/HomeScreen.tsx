@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import { ImageBackground, StyleSheet } from 'react-native';
 
-import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 
 export default function HomeScreen() {
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
+      <ImageBackground source={require('../assets/images/homebg.png')} style={styles.image}>
+        <Text style={styles.title}>Aurora</Text>
+      </ImageBackground>
     </View>
   );
 }
@@ -17,16 +17,22 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: "column",
+  },
+  image: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center",
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
+    textAlign: "center",
   },
   separator: {
     marginVertical: 30,
     height: 1,
     width: '80%',
+    justifyContent: "center",
   },
 });
