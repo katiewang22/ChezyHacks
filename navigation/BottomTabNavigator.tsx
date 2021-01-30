@@ -7,7 +7,8 @@ import HomeScreen from '../screens/HomeScreen';
 import JournalScreen from '../screens/JournalScreen';
 import CalendarScreen from '../screens/CalendarScreen';
 import DrawingScreen from '../screens/DrawingScreen';
-import { BottomTabParamList, HomeParamList, JournalParamList, CalendarParamList, DrawingParamList } from '../types';
+import SongScreen from '../screens/SongScreen';
+import { BottomTabParamList, HomeParamList, JournalParamList, CalendarParamList, DrawingParamList, SongParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -49,6 +50,13 @@ export default function BottomTabNavigator() {
         component={DrawingNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="brush" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Songs"
+        component={SongNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="musical-notes-outline" color={color} />,
         }}
       />
     </BottomTab.Navigator>
@@ -121,5 +129,19 @@ function DrawingNavigator() {
         options={{ headerTitle: 'Drawing' }}
       />
     </DrawingStack.Navigator>
+  );
+}
+
+const SongStack = createStackNavigator<SongParamList>();
+
+function SongNavigator() {
+  return (
+    <SongStack.Navigator>
+      <SongStack.Screen
+        name="SongScreen"
+        component={SongScreen}
+        options={{ headerTitle: 'Songs' }}
+      />
+    </SongStack.Navigator>
   );
 }

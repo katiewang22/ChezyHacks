@@ -8,6 +8,7 @@ export type BottomTabParamList = {
   Journal: undefined;
   Calendar: undefined;
   Drawing: undefined;
+  Songs: undefined;
 };
 
 export type HomeParamList = {
@@ -24,4 +25,8 @@ export type CalendarParamList = {
 
 export type DrawingParamList = {
   DrawingScreen: undefined;
+};
+
+export type SongParamList = {
+  SongScreen: undefined;
 };
