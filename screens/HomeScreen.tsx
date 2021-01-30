@@ -1,16 +1,25 @@
 import * as React from 'react';
 import { ImageBackground, StyleSheet } from 'react-native';
 import { useFonts, OleoScriptSwashCaps_400Regular } from '@expo-google-fonts/oleo-script-swash-caps';
-
+import { BadScript_400Regular } from '@expo-google-fonts/bad-script';
+import { Niconne_400Regular } from '@expo-google-fonts/niconne';
 import AppLoading from 'expo-app-loading';
 
 import { Text, View } from '../components/Themed';
+import { quotes } from '../quotes';
 
 export default function HomeScreen() {
 
   let [fontsLoaded] = useFonts({
     OleoScriptSwashCaps_400Regular,
+    BadScript_400Regular,
+    Niconne_400Regular,
   });
+
+  const objKeys = Object.keys(quotes);
+  const ranIndex = parseInt(objKeys[Math.floor(Math.random() * objKeys.length)]);
+  const quoteText = JSON.stringify(quotes[ranIndex].text);
+  const quoteAuthor = JSON.stringify(quotes[ranIndex].author).replace(/['"]+/g, ''); 
 
   if (!fontsLoaded) {
     return <AppLoading />;
@@ -19,7 +28,8 @@ export default function HomeScreen() {
       <View style={styles.container}>
         <ImageBackground source={require('../assets/images/homebg.png')} style={styles.image}>
           <Text style={styles.title}>Aurora</Text>
-          
+          <Text style={styles.quoteText}>{quoteText}</Text>
+          <Text style={styles.quoteAuthor}>- {quoteAuthor}</Text>
         </ImageBackground>
       </View>
     );
@@ -48,4 +58,22 @@ const styles = StyleSheet.create({
     width: '80%',
     justifyContent: "center",
   },
+	quoteText: {
+		fontSize: 35,
+    textAlign: "center",
+    fontFamily: 'Niconne_400Regular',
+    marginTop: 20,
+    marginLeft: 3,
+    marginRight: 3,
+    backgroundColor: 'rgba(225, 225, 225, 0.3)',
+	},
+	quoteAuthor: {
+		fontSize: 23,
+    color: "#515151",
+    textAlign: "center",
+    fontFamily: 'BadScript_400Regular',
+    marginLeft: 3,
+    marginRight: 3,
+    backgroundColor: 'rgba(225, 225, 225, 0.3)',
+	},
 });
