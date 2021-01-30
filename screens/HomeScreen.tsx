@@ -1,17 +1,29 @@
 import * as React from 'react';
 import { ImageBackground, StyleSheet } from 'react-native';
+import { useFonts, OleoScriptSwashCaps_400Regular } from '@expo-google-fonts/oleo-script-swash-caps';
+
+import AppLoading from 'expo-app-loading';
 
 import { Text, View } from '../components/Themed';
 
 export default function HomeScreen() {
 
-  return (
-    <View style={styles.container}>
-      <ImageBackground source={require('../assets/images/homebg.png')} style={styles.image}>
-        <Text style={styles.title}>Aurora</Text>
-      </ImageBackground>
-    </View>
-  );
+  let [fontsLoaded] = useFonts({
+    OleoScriptSwashCaps_400Regular,
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
+    return (
+      <View style={styles.container}>
+        <ImageBackground source={require('../assets/images/homebg.png')} style={styles.image}>
+          <Text style={styles.title}>Aurora</Text>
+          
+        </ImageBackground>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -25,9 +37,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 50, 
+    fontFamily: "OleoScriptSwashCaps_400Regular",
     textAlign: "center",
+    color: "black",
   },
   separator: {
     marginVertical: 30,
