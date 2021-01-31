@@ -18,6 +18,10 @@ declare global {
   var journalText: String;
 }
 
+const objKeys = Object.keys(prompts);
+const ranIndex = parseInt(objKeys[Math.floor(Math.random() * objKeys.length)]);
+const promptText = JSON.stringify(prompts[ranIndex].prompt).replace(/['"]+/g, '');
+
 export default function JournalScreen({navigation}: Props) {
 
   let [fontsLoaded] = useFonts({
@@ -25,12 +29,8 @@ export default function JournalScreen({navigation}: Props) {
     Tangerine_700Bold,
   });
 
-  const [text, onChangeText] = React.useState('Begin writing');
+  const [text, onChangeText] = React.useState('Let your thoughts flow');
   global.journalText = text;
-
-  const objKeys = Object.keys(prompts);
-  const ranIndex = parseInt(objKeys[Math.floor(Math.random() * objKeys.length)]);
-  const promptText = JSON.stringify(prompts[ranIndex].prompt.replace(/['"]+/g, ''));
 
   if (!fontsLoaded) {
     return <AppLoading />;
@@ -46,7 +46,6 @@ export default function JournalScreen({navigation}: Props) {
               colors={['#F6BD60', '#F28482']}
               style={styles.gradient}
               >
-                <Text style={styles.title}>Let your thoughts flow</Text>
                 <Text style={styles.prompt}>Prompt: {promptText}</Text>
             </LinearGradient>
             <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
@@ -98,6 +97,8 @@ const styles = StyleSheet.create({
     fontFamily: 'Tangerine_700Bold',
     justifyContent: 'center',
     alignSelf: 'center',
+    textAlign: 'center',
+    marginHorizontal: 10, 
   },
   separator: {
     marginVertical: 5,
@@ -105,8 +106,8 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   gradient: {
-    height: 110,
-    width: 300,
+    height: 150,
+    width: 360,
   },
   journal: {
     color:'#595959', 

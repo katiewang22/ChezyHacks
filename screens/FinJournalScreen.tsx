@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     width: 510,
   },
   separator: {
-    marginVertical: 30,
+    marginVertical: 20,
     height: 1,
     width: '80%',
   },
@@ -48,7 +48,9 @@ const styles = StyleSheet.create({
   journalEntries: {
     color:'#595959', 
     fontSize: 40, 
-    marginHorizontal: 5,
+    marginLeft: 150,
+    marginRight: 80,
+    marginBottom: 90,
     fontFamily: 'Tangerine_400Regular',
     justifyContent: 'center',
     alignSelf: 'center',
