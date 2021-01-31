@@ -55,7 +55,11 @@ export default function SongScreen(){
   }
 
   if (!fontsLoaded) {
-    return <AppLoading />;
+    return (
+      <View>
+        <Text>Loading...</Text>
+      </View>
+    );
   } else {
     return (
       <View>

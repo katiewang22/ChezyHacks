@@ -3,7 +3,6 @@ import { ImageBackground, StyleSheet } from 'react-native';
 import { useFonts, OleoScriptSwashCaps_400Regular } from '@expo-google-fonts/oleo-script-swash-caps';
 import { BadScript_400Regular } from '@expo-google-fonts/bad-script';
 import { Niconne_400Regular } from '@expo-google-fonts/niconne';
-import AppLoading from 'expo-app-loading';
 
 import { Text, View } from '../components/Themed';
 import { quotes } from '../quotes';
@@ -22,7 +21,11 @@ export default function HomeScreen() {
   const quoteAuthor = JSON.stringify(quotes[ranIndex].author).replace(/['"]+/g, ''); 
 
   if (!fontsLoaded) {
-    return <AppLoading />;
+    return (
+      <View>
+        <Text>Loading...</Text>
+      </View>
+    );
   } else {
     return (
       <View style={styles.container}>

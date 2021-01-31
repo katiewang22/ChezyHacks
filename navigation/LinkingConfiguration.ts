@@ -26,6 +26,11 @@ export default {
               DrawingScreen: 'four',
             },
           },
+          Songs: {
+            screens: {
+              SongScreen: 'five',
+            },
+          },
         },
       },
       NotFound: '*',

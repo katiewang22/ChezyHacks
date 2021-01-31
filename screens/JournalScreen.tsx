@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { TouchableOpacity, Platform, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, TextInput, StyleSheet } from 'react-native';
-import AppLoading from 'expo-app-loading';
 import { useFonts, Tangerine_400Regular, Tangerine_700Bold } from '@expo-google-fonts/tangerine';
 import { LinearGradient } from 'expo-linear-gradient';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -33,37 +32,41 @@ export default function JournalScreen({navigation}: Props) {
   global.journalText = text;
 
   if (!fontsLoaded) {
-    return <AppLoading />;
+    return (
+      <View>
+        <Text>Loading...</Text>
+      </View>
+    );
   } else {
     return (
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.container}
       >
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <View style={styles.inner}>
-            <LinearGradient
-              colors={['#F6BD60', '#F28482']}
-              style={styles.gradient}
-              >
-                <Text style={styles.prompt}>Prompt: {promptText}</Text>
-            </LinearGradient>
-            <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-            <TextInput
-              multiline
-              numberOfLines={20}
-              placeholder={text}
-              onChangeText={text => onChangeText(text)}
-              style={styles.journal}
-            />
-            <TouchableOpacity onPress={() => navigation.navigate('FinJournalScreen')}>
-              <View>
-                <Text>Done!</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-        </TouchableWithoutFeedback>
-      </KeyboardAvoidingView>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.inner}>
+          <LinearGradient
+            colors={['#F6BD60', '#F28482']}
+            style={styles.gradient}
+          >
+            <Text style={styles.prompt}>Prompt: {promptText}</Text>
+          </LinearGradient>
+          <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+          <TextInput
+            multiline
+            numberOfLines={20}
+            placeholder={text}
+            onChangeText={text => onChangeText(text)}
+            style={styles.journal}
+          />
+          <TouchableOpacity onPress={() => navigation.navigate('FinJournalScreen')}>
+            <View>
+              <Text>Done!</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
     );
   }
 }
