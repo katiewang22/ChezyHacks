@@ -8,21 +8,25 @@ import { Text, View } from '../components/Themed';
 import { JournalParamList } from '../types';
 import { prompts } from '../prompts';
 
+// For navigating to FinJournalScreen
 type FinJournalScreenNavigationProp = StackNavigationProp<JournalParamList, 'FinJournalScreen'>;
 type Props = {
     navigation: FinJournalScreenNavigationProp;
 };
 
+// global var holding user's journal input
 declare global {
   var journalText: String;
 }
 
+// Getting random prompt
 const objKeys = Object.keys(prompts);
 const ranIndex = parseInt(objKeys[Math.floor(Math.random() * objKeys.length)]);
 const promptText = JSON.stringify(prompts[ranIndex].prompt).replace(/['"]+/g, '');
 
 export default function JournalScreen({navigation}: Props) {
 
+  // Loading fonts
   let [fontsLoaded] = useFonts({
     Tangerine_400Regular,
     Tangerine_700Bold,
@@ -31,6 +35,7 @@ export default function JournalScreen({navigation}: Props) {
   const [text, onChangeText] = React.useState('Let your thoughts flow');
   global.journalText = text;
 
+  // Screen
   if (!fontsLoaded) {
     return (
       <View>

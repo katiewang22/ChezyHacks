@@ -4,7 +4,6 @@ import YoutubePlayer from "react-native-youtube-iframe";
 import { LinearGradient } from 'expo-linear-gradient';
 import { useFonts, BadScript_400Regular } from '@expo-google-fonts/bad-script';
 import { PatrickHand_400Regular } from '@expo-google-fonts/patrick-hand';
-import AppLoading from 'expo-app-loading';
 import * as Linking from 'expo-linking';
 
 import { Text, View } from '../components/Themed';

@@ -4,14 +4,17 @@ import { WebView } from 'react-native-webview';
 
 import { View } from '../components/Themed';
 
+// Creates prop
 interface NativeWebViewProps {
   target: string;
 }
 
+// WebView structure
 const NativeWebView = (props: NativeWebViewProps): JSX.Element => {
   return <WebView source={{ uri: props.target }} style={styles.webViewStyles}/>;
 };
 
+// Screen
 export default function DrawingScreen() {
   return (
     <View style={styles.container}>

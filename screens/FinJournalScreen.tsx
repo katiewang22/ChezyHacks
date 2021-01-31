@@ -6,9 +6,10 @@ import moment from 'moment';
 
 export default function FinJournalScreen() {
     
-    //console.log(global.journalText);
+    // Finds the time
     const time = moment().format('MMM Do YYYY, h:mm a');
 
+    // Screen
     return (
       <View style={styles.container}>
         <ImageBackground source={require('../assets/images/paper.jpg')} style={styles.image}>
