@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Button, TouchableOpacity, Platform, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, TextInput, StyleSheet } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { TouchableOpacity, Platform, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, TextInput, StyleSheet } from 'react-native';
 import AppLoading from 'expo-app-loading';
 import { useFonts, Tangerine_400Regular, Tangerine_700Bold } from '@expo-google-fonts/tangerine';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -8,6 +7,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 
 import { Text, View } from '../components/Themed';
 import { JournalParamList } from '../types';
+import { prompts } from '../prompts';
 
 type FinJournalScreenNavigationProp = StackNavigationProp<JournalParamList, 'FinJournalScreen'>;
 type Props = {
@@ -25,37 +25,12 @@ export default function JournalScreen({navigation}: Props) {
     Tangerine_700Bold,
   });
 
-  //1. Type entry
-  //2. Press submit
-  //3. See previous entries below
-
-  /*const storeData = async (value: string) => {
-    try {
-      await AsyncStorage.setItem('@storage_Key', value)
-    } catch (e) {
-      // saving error
-    }
-  }
-
-  const getData = async () => {
-    try {
-      const value = await AsyncStorage.getItem('@storage_Key')
-      if(value !== null) {
-        // value previously stored
-      }
-    } catch(e) {
-      // error reading value
-    }
-  }*/
-
   const [text, onChangeText] = React.useState('Begin writing');
-
   global.journalText = text;
 
-  //var writingText = global.journalText;
-
-  //const [writingText, setWritingText] = React.useState(String);
-  //const [journalTime, setJournalTime] = React.useState(String);
+  const objKeys = Object.keys(prompts);
+  const ranIndex = parseInt(objKeys[Math.floor(Math.random() * objKeys.length)]);
+  const promptText = JSON.stringify(prompts[ranIndex].prompt.replace(/['"]+/g, ''));
 
   if (!fontsLoaded) {
     return <AppLoading />;
@@ -72,7 +47,7 @@ export default function JournalScreen({navigation}: Props) {
               style={styles.gradient}
               >
                 <Text style={styles.title}>Let your thoughts flow</Text>
-                <Text style={styles.prompt}>Prompt: </Text>
+                <Text style={styles.prompt}>Prompt: {promptText}</Text>
             </LinearGradient>
             <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
             <TextInput
@@ -93,14 +68,6 @@ export default function JournalScreen({navigation}: Props) {
     );
   }
 }
-
-/*<View style={styles.button}>
-                  <Text style={styles.buttonText}>Done!</Text>
-              </View>*/
-
-/*<Text style={styles.journalEntries}>
-              {journalTime}: {journalText}
-            </Text>*/
 
 const styles = StyleSheet.create({
   container: {
@@ -151,10 +118,4 @@ const styles = StyleSheet.create({
     height: 250,
     width: 350,
   },
-  /*journalEntries: {
-    color:'#595959', 
-    fontSize: 40, 
-    marginHorizontal: 5,
-    fontFamily: 'Tangerine_400Regular',
-  },*/
 });
