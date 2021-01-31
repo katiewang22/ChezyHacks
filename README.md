@@ -1,1 +1,1 @@
-# Team 1261 ChezyHacks
+# Team 1261 Aurora Mental Health App
