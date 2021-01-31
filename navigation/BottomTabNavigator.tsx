@@ -5,6 +5,7 @@ import * as React from 'react';
 
 import HomeScreen from '../screens/HomeScreen';
 import JournalScreen from '../screens/JournalScreen';
+import FinJournalScreen from '../screens/FinJournalScreen';
 import CalendarScreen from '../screens/CalendarScreen';
 import DrawingScreen from '../screens/DrawingScreen';
 import SongScreen from '../screens/SongScreen';
@@ -98,7 +99,22 @@ function JournalNavigator() {
       <JournalStack.Screen
         name="JournalScreen"
         component={JournalScreen}
-        options={{ headerTitle: 'Journal' }}
+        options={{ 
+          headerTitle: 'Journal',
+          headerStyle: {
+            backgroundColor: '#F7EDE2',
+          },
+        }}
+      />
+      <JournalStack.Screen
+        name="FinJournalScreen"
+        component={FinJournalScreen}
+        options={{ 
+          headerTitle: 'Journal Entry',
+          headerStyle: {
+            backgroundColor: '#F7EDE2',
+          },
+        }}
       />
     </JournalStack.Navigator>
   );
@@ -112,7 +128,12 @@ function CalendarNavigator() {
       <CalendarStack.Screen
         name="CalendarScreen"
         component={CalendarScreen}
-        options={{ headerTitle: 'Calendar' }}
+        options={{ 
+          headerTitle: 'Calendar',
+          headerStyle: {
+            backgroundColor: '#F7EDE2',
+          },
+        }}
       />
     </CalendarStack.Navigator>
   );
@@ -126,7 +147,12 @@ function DrawingNavigator() {
       <DrawingStack.Screen
         name="DrawingScreen"
         component={DrawingScreen}
-        options={{ headerTitle: 'Drawing' }}
+        options={{ 
+          headerTitle: 'Drawing',
+          headerStyle: {
+            backgroundColor: '#F7EDE2',
+          },
+        }}
       />
     </DrawingStack.Navigator>
   );
@@ -140,7 +166,12 @@ function SongNavigator() {
       <SongStack.Screen
         name="SongScreen"
         component={SongScreen}
-        options={{ headerTitle: 'Songs' }}
+        options={{ 
+          headerTitle: 'Songs',
+          headerStyle: {
+            backgroundColor: '#F7EDE2',
+          },
+        }}
       />
     </SongStack.Navigator>
   );

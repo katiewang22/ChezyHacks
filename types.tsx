@@ -6,6 +6,7 @@ export type RootStackParamList = {
 export type BottomTabParamList = {
   Home: undefined;
   Journal: undefined;
+  FinJournal: undefined;
   Calendar: undefined;
   Drawing: undefined;
   Songs: undefined;
@@ -17,6 +18,7 @@ export type HomeParamList = {
 
 export type JournalParamList = {
   JournalScreen: undefined;
+  FinJournalScreen: undefined
 };
 
 export type CalendarParamList = {
